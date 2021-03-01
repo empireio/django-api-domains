@@ -1,14 +1,6 @@
 ![logo.png](diagrams/dads_logo.png)
 
 # Django API Domains
-_Style guides for the API age_
-
-| Version                                                                 | Author(s)                                 | Date       |
-| ----------------------------------------------------------------------- |-------------------------------------------|------------|
-| [1.2.1](https://github.com/phalt/django-api-domains/releases/tag/1.2.1) | Paul Hallett  paulandrewhallett@gmail.com | 25-09-2019 |
-| [1.2](https://github.com/phalt/django-api-domains/releases/tag/1.2)     | Paul Hallett  paulandrewhallett@gmail.com | 10-06-2019 |
-| [1.1](https://github.com/phalt/django-api-domains/releases/tag/1.1)     | Paul Hallett  paulandrewhallett@gmail.com | 09-04-2019 |
-| [1.0](https://github.com/phalt/django-api-domains/releases/tag/1.0)     | Paul Hallett  paulandrewhallett@gmail.com | 01-02-2019 |
 
 ## Introduction
 
@@ -29,4 +21,4 @@ In order to overcome these problems, this styleguide tries to achieve the follow
 
 # Read the styleguide
 
-The styleguide is now published as a readable documentation site. You can view it at [https://phalt.github.io/django-api-domains/](https://phalt.github.io/django-api-domains/) or view the [docs](docs/) folder directly.
+[the styleguide](docs/)

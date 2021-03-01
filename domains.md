@@ -8,8 +8,8 @@ What this styleguide calls a `domain` is roughly an extension of what Django wou
 
 > ### Examples in this guide
 
-> The examples in this guide will talk about a `book shop` that shares details about books.
-> This can be modelled as a _business domain_ called `books`, and as a _software domain_ also called `books`.
+> The examples in this guide will talk about a media platform that deals with pieces of content called `articles`.
+> This can be modelled as a _business domain_ called `articles`, and as a _software domain_ also called `articles`.
 
 ---
 
@@ -17,13 +17,15 @@ This guide tries to keep the key benefits of Django's `app` pattern - namely Dja
 
 This guide also retains Django's ability to *package apps as installable components in other applications*. This allows domains to be easily migrated to different codebases or completely different projects.
 
+
+
 ## Domain rules
 
 There are two major rules around domains:
 
 1. You **should** split a domain if it becomes too big to work on.
 
-    A domain should allow between 4-6 developers (3 pairs) to comfortably work on it. If you find your developers being blocked by each other then it is time to consider splitting the domain or checking whether the software has not diverged too far from the styleguide.
+    A domain should allow between 4-6 developers (3 pairs) to comfortably work on it. If you find you are being blocked by other developers working on the same domain then it is time to consider splitting the domain or checking whether the software has not diverged too far from the styleguide.
 
 ---
 
@@ -39,4 +41,10 @@ There are two major rules around domains:
 
 ---
 
+
+
 [Next, we will discuss the styleguide in detail.](styleguide.md)
+
+or
+
+[Go back to the main page](README.md)

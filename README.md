@@ -1,4 +1,4 @@
-# Introduction
+# Django styleguide - Empire
 
 ![Django API Domains image](https://repository-images.githubusercontent.com/164852158/ce0fb480-61c8-11e9-933b-60fa95d9e435)
 
@@ -16,5 +16,7 @@ In order to overcome these problems, this styleguide tries to achieve the follow
 3. Enable separation of domains to happen when it makes sense for **increased development velocity**, not just for **business value**.
 4. Design a styleguide that reduces the effort involved in extracting the code for large domains into separate application servers.
 5. Make sure the styleguide compliments API-based applications.
+
+
 
 [Before getting to the styleguide, click here to read about how we think about domains](domains.md)

@@ -16,15 +16,3 @@ In order to overcome these problems, this styleguide tries to achieve the follow
 3. Enable separation of domains to happen when it makes sense for **increased development velocity**, not just for **business value**.
 4. Design a styleguide that reduces the effort involved in extracting the code for large domains into separate application servers.
 5. Make sure the styleguide compliments API-based applications.
-
-## Current Version
-
-**CURRENT VERSION: [VERSION 1.2.1](https://github.com/phalt/django-api-domains/releases/tag/1.2.1)**
-
-## Previous Versions
-
-All previous versions can be found under the `docs/` folder when looking at a [specific tag](https://github.com/phalt/django-api-domains/releases).
-
-## CHANGELOG
-
-Please see [CHANGELOG.md](https://github.com/phalt/django-api-domains/blob/master/CHANGELOG.md)

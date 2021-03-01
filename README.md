@@ -21,4 +21,4 @@ In order to overcome these problems, this styleguide tries to achieve the follow
 
 # Read the styleguide
 
-[the styleguide](docs/)
+[Click here to read the styleguide](docs/)

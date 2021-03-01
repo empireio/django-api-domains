@@ -17,4 +17,4 @@ In order to overcome these problems, this styleguide tries to achieve the follow
 4. Design a styleguide that reduces the effort involved in extracting the code for large domains into separate application servers.
 5. Make sure the styleguide compliments API-based applications.
 
-[domains.md](Click here to read about domains)
+[Click here to read about domains](domains.md)

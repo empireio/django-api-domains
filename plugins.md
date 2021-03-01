@@ -26,3 +26,5 @@ When using Graphen-Django, we can organise the logic in a domain this way:
 Additional ruling for Graphene-Django:
 
 * You **should not** tightly link an `DjangoObjectType` to a Django model as this will tightly couple the data layer with the presentation layer. Instead, use a generic `ObjectType`.
+
+[Next up, we'll take a look at testing](testing.md)

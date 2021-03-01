@@ -213,3 +213,5 @@ class PGMNodeService:
 - Functions in services.py **must** use type annotations.
 - Functions in services.py **must** use keyword arguments.
 - You **should** be logging in `services.py`.
+
+[Next up, we'll take a closer look at one example](examples.md)

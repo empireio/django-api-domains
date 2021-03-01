@@ -11,4 +11,4 @@ During this time, Domain A is still talking to the old Domain B. When the new Do
 
 ![two-domains](https://raw.githubusercontent.com/phalt/django-api-domains/master/diagrams/two_dads.png)
 
-More examples to come in the future.
+[Next up, let's look at how GraphQL and REST play with this model](plugins.md)

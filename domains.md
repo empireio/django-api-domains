@@ -39,4 +39,4 @@ There are two major rules around domains:
 
 ---
 
-Next, we will discuss the styleguide in detail.
+[Next, we will discuss the styleguide in detail.](styleguide.md)

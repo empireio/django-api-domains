@@ -1,13 +1,15 @@
 
 ### Examples on this page
 
-In the examples below we imagine a service with two domains - one for books, and one for authors. The abstraction between books and authors is only present to demonstrate the concepts in the styleguide. You could argue that Books and Authors can live in one domain. In our example **we also assume that a book can only have one author.** It's a strange world.
+In the examples below we imagine a service with two domains - one for articles, and one for authors. The abstraction between articles and authors is only present to demonstrate the concepts in the styleguide. You could argue that Articles and Authors can live in one domain. For simplicity, **we also assume that an article can only have one author.** It's a strange world.
+
+
 
 ## Models
 
 _Models_ defines how a data model / database table looks. This is a Django convention that remains mostly unchanged. The key difference here is that you use _skinny models_. No complex functional logic should live here.
 
-In the past Django has recommended an [active record](https://docs.djangoproject.com/en/2.1/misc/design-philosophies/#models) style for its models. In practice, we have found that this encourages developers to bloat `models.py`, making it do too much and often binding the presentation and functional logic of a domain too tightly. This makes it very hard to have abstract presentations of the data in a domain. Putting all the logic in one place also makes it difficult to scale the number of developers working in this part of the codebase. See the [_"Which logic lives where?"_](/styleguide/#which-logic-lives-where) section for clarification.
+In the past Django has recommended an [active record](https://docs.djangoproject.com/en/3.2/misc/design-philosophies/#models) style for its models. In practice, we have found that this encourages developers to bloat `models.py`, making it do too much and often binding the presentation and functional logic of a domain too tightly. This makes it very hard to have abstract presentations of the data in a domain. Putting all the logic in one place also makes it difficult to scale the number of developers working in this part of the codebase. See the [_"Which logic lives where?"_](/styleguide/#which-logic-lives-where) section for clarification.
 
 A models.py file can look like:
 
@@ -16,16 +18,16 @@ import uuid
 from django.db import models
 
 
-class Book(models.Model):
+class Article(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    name = models.CharField(max_length=256)
-    publisher = models.CharField(max_length=256)
+    title = models.CharField(max_length=256)
+    subtitle = models.CharField(max_length=256)
     author_id = models.UUIDField(default=uuid.uuid4)
 
     @property
-    def name_and_publisher(self):
-        return f'{self.name}, {self.publisher}'
+    def title_and_subtitle(self):
+        return f'{self.title}, {self.subtitle}'
 
 ```
 
@@ -48,17 +50,17 @@ import logging
 import uuid
 from typing import Dict  # noqa
 
-from .services import BookService
+from .services import ArticleService
 
 logger = logging.getLogger(__name__)
 
 
-class BookAPI:
+class ArticleAPI:
 
     @staticmethod
-    def get(*, book_id: uuid.UUID) -> Dict:
+    def get(*, article_guid: uuid.UUID) -> Dict:
         logger.info('method "get" called')
-        return BookService.get_book(id=book_id)
+        return ArticleService.get_article(id=article_guid)
 
 ```
 
@@ -96,9 +98,9 @@ from src.authors.apis import AuthorAPI
 
 
 # plain example
-def update_author_name(*, author_name: Str, author_id: uuid.UUID) -> None:
+def update_author_name(*, author_name: Str, author_guid: uuid.UUID) -> None:
     AuthorAPI.update_author_name(
-        id=author_id,
+        guid=author_guid,
         name=author_name,
     )
 
@@ -107,17 +109,17 @@ def update_author_name(*, author_name: Str, author_id: uuid.UUID) -> None:
 class AuthorInterface:
 
     @staticmethod
-    def get_author(*, id: uuid.UUID) -> Dict:
-        return AuthorAPI.get(id=id)
+    def get_author(*, guid: uuid.UUID) -> Dict:
+        return AuthorAPI.get(guid=guid)
 
     @staticmethod
     def update_author_name(
       *,
       author_name: Str,
-      author_id: uuid.UUID,
+      author_guid: uuid.UUID,
     ) -> None:
         AuthorAPI.update_author_name(
-            id=author_id,
+            guid=author_guid,
             name=author_name,
         )
 
@@ -149,58 +151,58 @@ import uuid
 from typing import Dict, Str  # noqa
 
 from .interfaces import AuthorInterface
-from .models import Book
+from .models import Article
 
 logger = logging.getLogger(__name__)
 
 
 # Plain example
-def get_book(*, id: uuid.UUID) -> Dict:
-    book = Book.objects.get(id=id)
-    author = AuthorInterface.get_author(id=book.author_id)
+def get_article(*, guid: uuid.UUID) -> Dict:
+    article = Book.objects.get(guid=guid)
+    author = AuthorInterface.get_author(guid=article.author_guid)
     return {
-        'name': book.name,
+        'title': article.title,
         'author_name': author.name,
     }
 
 
 # Class example
-class PGMNodeService:
+class ArticleService:
 
     @staticmethod
-    def get_book(*, id: uuid.UUID) -> Dict:
-        book = Book.objects.get(id=id)
-        author = AuthorInterface.get_author(id=book.author_id)
+    def get_article(*, id: uuid.UUID) -> Dict:
+        article = Book.objects.get(guid=guid)
+        author = AuthorInterface.get_author(guid=article.author_guid)
         return {
-            'name': book.name,
+            'title': article.title,
             'author_name': author.name,
         }
 
     @staticmethod
-    def create_book(*, name: Str, author_id: uuid.UUID) -> Dict:
-        logger.info('Creating new book')
-        new_book = Book.objects.create(name=name, author_id=author_id)
-        author = AuthorInterface.get_author(id=new_book.author_id)
+    def create_article(*, name: Str, author_id: uuid.UUID) -> Dict:
+        logger.info('Creating new article')
+        new_article = Article.objects.create(name=name, author_guid=author_guid)
+        author = AuthorInterface.get_author(guid=new_article.author_guid)
         return {
-            'name': new_book.name,
+            'title': new_article.title,
             'author_name': author.name,
         }
 
     @staticmethod
-    def update_book_name_and_author_name(
+    def update_article_name_and_author_name(
         *,
         name: Str,
         author_name: Str,
-        author_id: uuid.UUID,
-        id: uuid.UUID,
+        author_guid: uuid.UUID,
+        guid: uuid.UUID,
     ) -> Dict:
-        logger.info('Updating book name and author name')
-        book = Book.objects.get(id=id).update(name=name)
+        logger.info('Updating article name and author name')
+        article = Article.objects.get(guid=guid).update(name=name)
         author = AuthorInterface.update_author_name(
-            name=author_name, id=author_id,
+            name=author_name, guid=author_guid,
         )
         return {
-            'name': book.name,
+            'title': article.title,
             'author_name': author.name,
         }
 
@@ -214,4 +216,10 @@ class PGMNodeService:
 - Functions in services.py **must** use keyword arguments.
 - You **should** be logging in `services.py`.
 
-[Next up, we'll take a closer look at one example](examples.md)
+
+
+[Next up, we'll take a closer look at how two domains interact](examples.md)
+
+or
+
+[Go back to the main page](README.md)

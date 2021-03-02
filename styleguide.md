@@ -15,7 +15,7 @@
 
 In addition, any existing files from a standard Django app are still allowed, such as `urls.py`, `apps.py` and `migrations/*`.
 
-* `Views.py` in [Django's pattern](https://docs.djangoproject.com/en/dev/#the-view-layer) is **explicitly not allowed** in this styleguide.
+* `views.py` in [Django's pattern](https://docs.djangoproject.com/en/dev/#the-view-layer) is **explicitly not allowed** in this styleguide.
 
 We only focus on API-based applications. Most logic that used to live in Django's `views.py` would now be separated into APIs and Services.
 
@@ -114,4 +114,8 @@ Logic for handling the transformation of data from other domains.
 
 ---
 
-[Next up, let's take a closer look at an example and point out the files in use](files.md)
+[Next up, let's take a closer look and point out the files in use](files.md)
+
+or
+
+[Go back to the main page](README.md)

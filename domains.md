@@ -37,7 +37,7 @@ There are two major rules around domains:
 ---
 
 > ### Protip
-> An example _software_ domain is provided in the same directory as this styleguide under [example_domain/](https://github.com/phalt/django-api-domains/tree/master/example_domain).
+> An example _software_ domain is provided in the same directory as this styleguide under [example_domain/](example_domain).
 
 ---
 

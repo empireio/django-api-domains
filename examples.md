@@ -1,6 +1,7 @@
 ## Two domains
 
 Let's start with a basic example - a project that has two domains. They both expose APIs for a Frontend service, and they also communicate to each other.
+
 Communicating to the Frontend service is simple - they have defined a REST API in their API layer and the Frontend calls it.
 
 When talking to each other, they both _interface_ (hence the naming choice) with each other through the appropriate layers. Sometimes we call this the "API to interface path".
@@ -11,4 +12,8 @@ During this time, Domain A is still talking to the old Domain B. When the new Do
 
 ![two-domains](https://raw.githubusercontent.com/phalt/django-api-domains/master/diagrams/two_dads.png)
 
-[Next up, let's look at how GraphQL and REST play with this model](plugins.md)
+[Next up, let's look at how GraphQL and REST play with this model](apis.md)
+
+or
+
+[Go back to the main page](README.md)

@@ -82,7 +82,7 @@ Logic about presentation.
 
 
 ### Services
-Logic around coordination and transactions.
+Business logic and logic around coordination and transactions.
 
 ---
 
@@ -93,7 +93,7 @@ Logic around coordination and transactions.
 
 
 ### Models
-Logic around information.
+Logic around information. Some convenience methods for accessing or preparing data for usage is acceptable. Nothing you would consider business logic though.
 
 ---
 
